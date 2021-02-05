@@ -43,9 +43,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (CarInformationContext context = new CarInformationContext())
             {
-                return filter == null
-                    ? context.Set<Car>().ToList()
-                    : context.Set<Car>().Where(filter).ToList();
+                return filter == null ? context.Set<Car>().ToList() : context.Set<Car>().Where(filter).ToList();
             }
         }
 

@@ -24,6 +24,10 @@ namespace DataAccess.Concrete.InMemory
 
             };
         }
+
+        Car ICarDal.Delete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        Car ICarDal.Update { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void Add(Car car)
         {
             _cars.Add(car);
@@ -43,6 +47,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Car> GetAll()
         {
             return _cars;
+        }
+
+        public List<Car> GetAll(Func<object, object> p)
+        {
+            throw new NotImplementedException();
         }
 
         //Aslında Bir Fonksıyon tanımladık gibi dusunebilirsiniz

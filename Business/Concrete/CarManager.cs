@@ -1,7 +1,5 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,66 +8,63 @@ using System.Text;
 namespace Business.Concrete
 {
     public class CarManager : ICarService
-    //Sisteme yeni araba eklendiğinde aşağıdaki kuralları çalıştırınız.
-    //Araba ismi minimum 2 karakter olmalıdır
-    //Araba günlük fiyatı 0'dan büyük olmalıdır.
-
-
-
     {
-        DataAccess.Concrete.InMemory.ICarDal _CarDal;
-        private EfCarDal efCarDal;
-
-        public CarManager(DataAccess.Concrete.InMemory.ICarDal carDal)
+        ICarDal _carDal;
+        public CarManager(ICarDal carDal)
         {
-            _CarDal = carDal;
-        }
-
-        public CarManager(EfCarDal efCarDal)
-        {
-            this.efCarDal = efCarDal;
+            _carDal = carDal;
         }
 
         public void Add(Car car)
         {
-            if (car.DailyPrice > 0 && car.Description.Length >=2 )
+            if (car.DailyPrice > 0)
             {
-                _CarDal.Add(car);
+                _carDal.Add(car);
+                Console.WriteLine("Araba başarıyla eklendi.");
             }
             else
             {
-                Console.WriteLine("Yanlıs Bilgi Girdiniz");
+                Console.WriteLine($"Lütfen günlük fiyat kısmını 0'dan büyük giriniz. Girdiğiniz değer : {car.DailyPrice}");
             }
-            
+        }
+
+        public IEnumerable<Car> GetByDailyPrice(int v)
+        {
+            throw new NotImplementedException();
         }
 
         public void Delete(Car car)
         {
-            _CarDal.Delete = car;
+            _carDal.Delete(car);
+            Console.WriteLine("Araba başarıyla silindi.");
         }
 
         public List<Car> GetAll()
         {
-            return _CarDal.GetAll();
+            return _carDal.GetAll();
         }
 
-       
-
-        public List<Car> GetCarsByColorId(int ColorId)
+        public List<Car> GetAllByBrandId(int id)
         {
-            return _CarDal.GetAll(c => c.ColorId == ColorId);
+            return _carDal.GetAll(a => a.BrandId == id);
         }
 
-        public void Update(Car car)
+        public List<Car> GetAllByColorId(int id)
         {
-            _CarDal.Update = car;
+            return _carDal.GetAll(a => a.ColorId == id);
+        }
+
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(a => a.DailyPrice >= min && a.DailyPrice <= max);
         }
 
         
 
-        List<Car> ICarService.GetCarsByBrandId(int BrandId)
+        public void Update(Car car)
         {
-            return _CarDal.GetAll(p=>p.BrandId == BrandId);
+            _carDal.Update(car);
+            Console.WriteLine("Güncellendi");
         }
     }
 }

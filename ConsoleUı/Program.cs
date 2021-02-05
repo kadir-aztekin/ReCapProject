@@ -11,9 +11,10 @@ namespace ConsoleUı
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var x in carManager.Update(Color=1))
+            /*(new EfCarDal());*/
+            foreach (var y in carManager.GetAllByColorId())
             {
-                Console.WriteLine(x.Description);
+                Console.WriteLine(y.ColorId);
             }
         }
     }
