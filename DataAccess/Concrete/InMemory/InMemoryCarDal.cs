@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryCarDal : ICarDall
+    public class InMemoryCarDal : ICarDal
     {
         //_cars yapmamızıın sebebi classın ıcınde fakat methodun dısında oldugu ıcın boyle tanımlandı  
         List<Car> _cars;
@@ -24,7 +24,6 @@ namespace DataAccess.Concrete.InMemory
 
             };
         }
-        
         public void Add(Car car)
         {
             _cars.Add(car);
@@ -65,5 +64,15 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ModelYear = car.ModelYear;
             
         }
+    }
+
+    public interface ICarDal
+    {
+        Car Delete { get; set; }
+        Car Update { get; set; }
+
+        void Add(Car car);
+        List<Car> GetAll(Func<object, object> p);
+        List<Car> GetAll();
     }
 }
