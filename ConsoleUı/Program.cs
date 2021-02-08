@@ -1,6 +1,5 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
@@ -11,11 +10,30 @@ namespace ConsoleUı
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            /*(new EfCarDal());*/
-            foreach (var y in carManager.GetAllByColorId(2))
+            foreach (var Dto in carManager.GetCarDetails())
             {
-                Console.WriteLine(y.Description);
+                Console.WriteLine(Dto.BrandId+" / "+Dto.Description);
             }
+            
+            
+            
+
+        }
+
+        private static void BrandGetAll()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandId);
+            }
+        }
+
+        private static void ColorAdd()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            Color color = new Color { ColorName = "Yeşlil", ColorId = 3 };
+            colorManager.Add(color);
         }
     }
 }
