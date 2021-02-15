@@ -20,7 +20,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.DailyPrice > 0)
+            if (car.DailyPrice < 0)
             {
                 return new ErrorResult(Messages.CarNotAdded);
             }

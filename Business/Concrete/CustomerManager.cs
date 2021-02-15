@@ -20,14 +20,23 @@ namespace Business.Concrete
 
         public IResult Add(Customer customer)
         {
+            
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);
         }
 
-        public IResult Delete(Customer customer)
+        public IResult Delete(int customerId )
         {
-            _customerDal.Delete(customer);
+           var result=  _customerDal.Get(c => c.Id == customerId);
+            if (result==null)
+            {
+                return new ErrorResult(Messages.NotDeleted);
+            }
+
+            _customerDal.Delete(result);
             return new SuccessResult(Messages.CustomerDeleted);
+
+            
         }
 
         public IDataResult<List<Customer>> GetAll()

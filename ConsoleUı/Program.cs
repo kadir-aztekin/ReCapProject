@@ -15,22 +15,21 @@ namespace ConsoleUı
             //CustomerTest();
             //RentalTest();
             //UserTest();
-
+            //R/*entalAdded();*/
             //UserAdded();
-            
-            RentalManager rental = new RentalManager(new EfRentalDal());
-            var updatedrental = rental.GetByCarId(8).Data.LastOrDefault(r => r.ReturnDate == null);
-            if (updatedrental!=null)
+            //customerdeleted();
+
+
+        }
+
+        private static void customerdeleted()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Delete(1);
+            foreach (var customer in customerManager.GetAll().Data)
             {
-                updatedrental.ReturnDate = DateTime.Now;
-                rental.Update(updatedrental);
+                Console.WriteLine(customer.CompanyName);
             }
-            
-
-            RentalAdded()
-
-
-
         }
 
         private static void RentalAdded()
