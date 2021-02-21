@@ -30,9 +30,9 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
         [HttpGet("getuserıd")]
-        public IActionResult GetUserId(int userıd)
+        public IActionResult GetUserId(int userId)
         {
-            var result = _customerService.GetUserId( userıd);
+            var result = _customerService.GetUserId( userId);
             if (result.Success)
             {
                 return Ok(result.Data);
