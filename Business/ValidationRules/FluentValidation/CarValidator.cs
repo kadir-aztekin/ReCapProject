@@ -16,7 +16,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.ModelYear).NotEmpty();
            
             RuleFor(p => p.DailyPrice).GreaterThanOrEqualTo(1).When(p=>p.CarId ==1);
-            RuleFor(p => p.CarId).NotEmpty();
+            
             RuleFor(p => p.BrandId).NotEmpty();
             RuleFor(p => p.ColorId).NotEmpty();
             RuleFor(p => p.Description).NotEmpty();
