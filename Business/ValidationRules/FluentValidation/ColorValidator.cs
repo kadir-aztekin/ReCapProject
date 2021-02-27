@@ -12,7 +12,7 @@ namespace Business.ValidationRules.FluentValidation
         public ColorValidator()
         {
             RuleFor(p => p.ColorName).Must(StartWihA).WithMessage("Renkler A bile başlamalı");
-            R
+            
             
 
         }
