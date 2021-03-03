@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entites.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -51,11 +52,11 @@ namespace ConsoleUı
         {
             UserManager userManager = new UserManager(new EfUserDal());
             User user = new User();
-            user.FırstName = "kadir";
+            user.FirstName = "kadir";
             user.LastName = "FAFA";
             user.Email = "kfafkakfafafafa@gmail.com";
 
-            user.Password = "111";
+            
 
             userManager.Add(user);
         }
@@ -70,7 +71,7 @@ namespace ConsoleUı
                 {
                     foreach (var user in result.Data)
                     {
-                        Console.WriteLine("Mail:   " + user.Email + "  /  " + "FırstName : " + user.FırstName + "  /  " + " LastName : " + user.LastName + "   /  " + user.Password);
+                        Console.WriteLine("Mail:   " + user.Email + "  /  " + "FırstName : " + user.FirstName + "  /  " + " LastName : " + user.LastName + "   /  " );
                     }
                 }
             }

@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Entities.Concrete;
+using Core.Entites.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        IUserService _userService;
+        readonly IUserService _userService;
 
         public UsersController(IUserService userService)
         {
@@ -49,16 +49,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("getbyemail")]
-        public IActionResult GetByEmail(string email)
-        {
-            var result = _userService.GetByEmail(email);
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
+        
         [HttpPost ("add")]
         public IActionResult Add(User user)
         {

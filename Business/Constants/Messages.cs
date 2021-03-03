@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entites.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -31,9 +32,15 @@ namespace Business.Constants
         public static string UserAdded = "Kullanıcı Eklendi";
         public static string UserDeleted = "Kullanıcı Silindi";
         public static string UserUpdated = "Kullanıcı Güncellendi";
-        internal static string RentalAddedError = "Eklenmedi";
-        internal static string RentalAdded = "Eklendi";
-        internal static string CustomerNotAdded;
-        internal static string NotDeleted;
+        public static string RentalAddedError = "Eklenmedi";
+        public static string RentalAdded = "Eklendi";
+        public static string CustomerNotAdded = "Kullanıcı Eklenemedi";
+        public static string NotDeleted = "Silinemedi";
+        public static string UserNotFound = "Kullanıcı Bulunamadı";
+        public static string PasswordError = "Şifre Yanlıs ";
+        public static string SucessFulLogin = "Sisteme Giriş Başarılı";
+        public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
+        public static string UserRegisterd = "Kullanıcı Başarıyla Kaydedildi";
+        public static string AccessTokenCreate = "Access Token Başarıyla Olusturuldu ";
     }
 }
