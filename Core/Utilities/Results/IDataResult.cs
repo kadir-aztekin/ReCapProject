@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-    public interface IDataResult<T>:IResult
+    public interface IDataResult<T> :IResult
     {
-        T Data { get; } 
+        //I RESULT VERMEMIZIN NEDENI DATA RESULT( SUCCESS,MESSAGES VE LİST DONDURECEK) BU YUZDEN 
+        // I RESULT DAN SUCCES VE MESSAGES CEKIYOR 
+        T Data { get; }
     }
 }

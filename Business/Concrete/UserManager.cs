@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
-using Core.Entites.Concrete;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using FluentValidation;
@@ -33,6 +35,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
+        [SecuredOperation("user.list,admin")]
+        [ValidationAspect(typeof(UserValidator))]
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
@@ -68,6 +72,12 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdated);
 
+
+        }
+        public IResult AddTransactionalTest(User user)
+        {
+            _userDal.Add(user);
+            return new SuccessResult(Messages.UserAdded);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
-using Core.Entites.Concrete;
+
+using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

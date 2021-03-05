@@ -1,4 +1,5 @@
-﻿using Core.Entites.Concrete;
+﻿
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Business.Abstract
         User GetByMail(string email);
 
 
-
+        IResult AddTransactionalTest(User user);
 
     }
 }

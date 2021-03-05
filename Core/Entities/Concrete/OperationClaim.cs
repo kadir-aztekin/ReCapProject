@@ -1,6 +1,4 @@
-﻿using Core.Entities;
-
-namespace Core.Entites.Concrete
+﻿namespace Core.Entities.Concrete
 {
     public class OperationClaim : IEntity
     {
@@ -8,4 +6,3 @@ namespace Core.Entites.Concrete
         public string Name { get; set; }
     }
 }
-

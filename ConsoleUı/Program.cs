@@ -1,5 +1,5 @@
 ﻿using Business.Concrete;
-using Core.Entites.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;

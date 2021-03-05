@@ -1,10 +1,8 @@
-﻿
-using Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.Entites.Concrete
+namespace Core.Entities.Concrete
 {
     public class UserOperationClaim : IEntity
     {
@@ -13,4 +11,3 @@ namespace Core.Entites.Concrete
         public int OperationClaimId { get; set; }
     }
 }
-
