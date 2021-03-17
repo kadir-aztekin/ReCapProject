@@ -12,6 +12,6 @@ namespace DataAccess.Abstract
 {
     public interface IRentalDal:IEntityRepository<Rental>
     {
-        
+        List<RentalsDetailDto> GetRentalsDetails();
     }
 }

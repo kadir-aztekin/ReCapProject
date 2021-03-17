@@ -35,7 +35,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
-        [SecuredOperation("user.list,admin")]
+        
         [ValidationAspect(typeof(UserValidator))]
         public IDataResult<List<User>> GetAll()
         {

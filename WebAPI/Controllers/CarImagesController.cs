@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("car/{carId}")]
+        [HttpGet("getbycarid")]
         public IActionResult GetAllByCarId(int carId)
         {
             var result = _carImageService.GetAllByCarId(carId);
@@ -57,10 +57,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] Image image, [FromForm] CarImage carImage)
+        public IActionResult Add([FromForm] IFormFile image, [FromForm] CarImage carImage)
         {
 
-            var result = _carImageService.Add(image, carImage);
+            var result = _carImageService.Add(image,carImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -80,7 +80,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update([FromForm] Image image, [FromForm] CarImage carImage)
+        public IActionResult Update([FromForm] IFormFile image, [FromForm] CarImage carImage)
         {
             var result = _carImageService.Update(image, carImage);
             if (result.Success)

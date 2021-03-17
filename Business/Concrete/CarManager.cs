@@ -8,6 +8,7 @@ using Entities.Concrete;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -40,7 +41,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour==06)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MainintenanceTime);
             }
@@ -74,6 +75,16 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDtoColorId(int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x=>x.ColorId==colorId).ToList());
+        }
+        public IDataResult<List<CarDetailDto>> GetCarDtoBrandId(int brandId)
+        {
+           
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x => x.BrandId == brandId).ToList());
         }
     }
 }

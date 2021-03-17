@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -21,13 +22,12 @@ namespace WebAPI.Controllers
             _brandservice = brandservice;
         }
         [HttpGet("getall")]
-        [Authorize(Roles ="Product.List")]
         public IActionResult GetAll()
         {
             var result = _brandservice.GetAll();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
             var result = _brandservice.GetById(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
