@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -120,6 +121,22 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result.Message);
+        }
+        [HttpGet("GetWithFilter")]
+        public IActionResult GetWithFilter(int? brandId, int? colorId)
+        {
+            FilterDto filter = new FilterDto
+            {
+                BrandId = brandId,
+                ColorId = colorId,
+            };
+
+            var result = _carservice.GetCarDetailsFatih(filter);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
         }
 
 

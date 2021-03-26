@@ -2,10 +2,12 @@
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Filter;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +87,17 @@ namespace Business.Concrete
         {
            
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x => x.BrandId == brandId).ToList());
+        }
+
+         public IDataResult<List<CarDetailDto>> GetCarDetailsFatih(FilterDto filter)
+        {
+           
+
+            var exp = Filter.DynamicFilter<CarDetailDto, FilterDto>(filter);
+            
+
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsFatih(exp));
+
         }
     }
 }

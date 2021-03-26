@@ -1,6 +1,7 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.Dtos;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Business.Abstract
         IDataResult<List<CarDetailDto>> GetCarDtoColorId(int colorId);
         IDataResult<List<CarDetailDto>> GetCarDtoBrandId(int brandId);
 
-
+        IDataResult<List<CarDetailDto>> GetCarDetailsFatih(FilterDto filter);
 
     }
 }
