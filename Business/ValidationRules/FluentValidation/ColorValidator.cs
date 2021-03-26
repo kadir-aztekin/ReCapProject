@@ -11,15 +11,13 @@ namespace Business.ValidationRules.FluentValidation
 
         public ColorValidator()
         {
-            RuleFor(p => p.ColorName).Must(StartWihA).WithMessage("Renkler A bile başlamalı");
-            
-            
+            RuleFor(p => p.ColorName).NotEmpty();
+
+
+
 
         }
 
-        private bool StartWihA(string arg)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
