@@ -89,15 +89,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x => x.BrandId == brandId).ToList());
         }
 
-         public IDataResult<List<CarDetailDto>> GetCarDetailsFatih(FilterDto filter)
+        public IDataResult<CarDetailDto> GetCarById(int carId)
         {
-           
-
-            var exp = Filter.DynamicFilter<CarDetailDto, FilterDto>(filter);
-            
-
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsFatih(exp));
-
+            var result = _carDal.GetCarDetails().Where(x=>x.CarId==carId).SingleOrDefault();
+            return new SuccessDataResult<CarDetailDto>(result);
         }
     }
 }

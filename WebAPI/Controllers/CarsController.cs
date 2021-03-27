@@ -122,22 +122,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("GetWithFilter")]
-        public IActionResult GetWithFilter(int? brandId, int? colorId)
+        [HttpGet("getcarbyid")]
+        public IActionResult GetCarById(int carId)
         {
-            FilterDto filter = new FilterDto
-            {
-                BrandId = brandId,
-                ColorId = colorId,
-            };
-
-            var result = _carservice.GetCarDetailsFatih(filter);
+            var result = _carservice.GetCarById(carId);
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest();
+            return BadRequest(result.Message);
         }
+
 
 
     }
